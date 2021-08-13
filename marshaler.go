@@ -2,7 +2,6 @@ package money
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 func (c CAD) MarshalJSON() ([]byte, error) {
@@ -16,7 +15,6 @@ func (c *CAD) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	parsedCad, err := ParseCAD(str)
-	fmt.Println(parsedCad)
 	if err != nil {
 		return err
 	}
