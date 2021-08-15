@@ -47,13 +47,14 @@ func Test_ParseCAD_Success(t *testing.T) {
 		{"123456¢", *money.NewMoney(1234, 56)},
 		{"$.000123456", *money.NewMoney(0, 0)},
 	}
-	for _, test := range testTable {
+	for testCase, test := range testTable {
 		got, err := money.ParseCAD(test.S)
 		if err != nil {
-			t.Error(err)
+			t.Errorf("#%d : we get an error with value %s adn error %v", testCase, test.S, err)
+			continue
 		}
 		if *got != test.Result {
-			t.Errorf(test.S, got.AsCent(), test.Result.AsCent())
+			t.Errorf("#%d : we got %v from values %v but expected %v ", testCase, got.AsCent(), test.Result.AsCent(), test.S)
 			continue
 		}
 	}
@@ -68,6 +69,7 @@ func Test_ParseCAD_Failure(t *testing.T) {
 		{"$"},
 		{"$-¢."},
 		{"$1-2.-1"},
+		{"$.123456"},
 	}
 	for testCase, test := range testTable {
 		got, err := money.ParseCAD(test.S)

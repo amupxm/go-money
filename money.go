@@ -85,6 +85,9 @@ func ParseCAD(s string) (*CAD, error) {
 			sArr[1] = fmt.Sprintf("%s0", sArr[1])
 
 		}
+		if len(sArr[1]) > 3 {
+			return nil, errors.New(fmt.Sprint("invalid money string ", sArr[1]))
+		}
 		if len(sArr[1]) > 2 {
 			sArr[1] = sArr[1][:2]
 		}
