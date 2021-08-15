@@ -23,8 +23,9 @@ go-money can parse money string to money type but you can use numbers as input t
 	result := moneyOne.Sub(*moneyTwo)
 	fmt.Printf("money is : %v\n", result) // will prints money is : CAD$-101.80
 ```
+You can pass all valid money string like <b><i>$CAD-9.0</i> , <i>CAD$79</i> , <i>23.65</i> , <i>-0.9</i> , <i>.09</i> , <i>78.98CAD</i> , <i>98.07$</i></b> and ... 
 
-it also provides inner umarshaler,unmarshaler,Scanner and valuer which make it super easy to use 
+It also provides inner umarshaler,unmarshaler,Scanner and valuer which make it super easy to use 
 
 ### unmarshal
 ```go 
@@ -71,4 +72,7 @@ And you can scan,value to sql/database without any troubles =)
 	 VALUES ($1, $2) RETURNING money`, user.UserName,user.money).Scan(&theMoney)
     fmt.Println("Money is %v\n" ,theMoney )  // Money is : CAD$99.99
 ```
+Money type in compatible with postgres monet type.
+
+
 Give star if interested  :star2:
