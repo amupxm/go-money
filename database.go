@@ -8,7 +8,20 @@ import (
 )
 
 func (c CAD) Value() (driver.Value, error) {
-	return fmt.Sprintf("%d.%d", c.dollar, c.cents), nil
+	str := ""
+
+	neg := ""
+	p := int64(1)
+	if c.dollar < 0 || c.cents < 0 {
+		neg = "-"
+		p = -1
+	}
+	c.dollar = c.dollar * p
+	c.cents = c.cents * p
+	if c.cents <= 9 && c.cents > 0 {
+		str = "0"
+	}
+	return fmt.Sprintf("%s%d.%s%d", neg, c.dollar, str, c.cents), nil
 }
 
 func (c *CAD) Scan(src interface{}) (err error) {
