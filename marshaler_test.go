@@ -51,3 +51,21 @@ func TestUnmarshalJSON_Success(t *testing.T) {
 		}
 	}
 }
+
+func TestUnmarshalJSON_Failure(t *testing.T) {
+	testTable := []struct {
+		Bytes []byte
+	}{
+		{Bytes: []byte(`"CAD$1.1.00"`)},
+		{Bytes: []byte(`"CAD$1.1.00`)},
+		{Bytes: []byte(`"CAD$-"`)},
+	}
+	for testIndex, test := range testTable {
+		var m money.CAD
+		err := m.UnmarshalJSON(test.Bytes)
+		if err == nil {
+			t.Errorf("#%d : expected an error happen with values %v but it do not happened", testIndex, err)
+		}
+
+	}
+}
