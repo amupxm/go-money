@@ -1,6 +1,5 @@
 
 <p align="right">
-  <a href="https://actions-badge.atrox.dev/amupxm/go-money/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Famupxm%2Fgo-money%2Fbadge%3Fref%3Dmain&style=flat-square" /></a>
   <a href="ttps://codecov.io/gh/amupxm/go-money"><img alt="github-status-action status" src="https://codecov.io/gh/amupxm/go-money/branch/main/graph/badge.svg?token=SPO9OYHIHE"></a>
 </p>
 
