@@ -2,6 +2,7 @@ package money
 
 import "fmt"
 
+//GoString creates sting
 func (c CAD) GoString() string {
 	return fmt.Sprintf("money.cents(%d)", c.AsCent())
 }

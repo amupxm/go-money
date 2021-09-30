@@ -9,16 +9,19 @@ import (
 )
 
 type (
+	//CAD is canadian dollar
 	CAD struct {
 		dollar int64
 		cents  int64
 	}
 )
 
+//AsCent returns the amount in cents
 func (c CAD) AsCent() int64 {
 	return c.cents + c.dollar*100
 }
 
+//ParseCAD parses a string into a CAD
 func ParseCAD(s string) (*CAD, error) {
 	// helper function to parse a string into a int64
 	convToInt := func(str string) int64 {
@@ -104,12 +107,15 @@ func ParseCAD(s string) (*CAD, error) {
 	return nil, errors.New(fmt.Sprint(iscents, len(sArr), s))
 }
 
+//NewMoney creates a new CAD
 func NewMoney(dollars, cents int64) *CAD {
 	return &CAD{
 		dollar: dollars,
 		cents:  cents,
 	}
 }
+
+//Cents is a helper function to create a CAD from cents
 func Cents(i int64) CAD {
 	neg := false
 	if i < 0 {

@@ -13,15 +13,15 @@ func main() {
 	moneyTwo, _ := money.ParseCAD(".90$")
 
 	result := moneyOne.Sub(*moneyTwo)
-	fmt.Printf("money is : %v\n", result) // will prints money is : CAD$-101.80
+	fmt.Printf("money is : %v\n", result) // will prints money is:CAD$-101.80
 
 	type jsonType struct {
 		User  string    `json:"user"`
 		Money money.CAD `json:"money"`
 	}
 	var someStruct jsonType
-	someJsonString := `{"user":"amupxm","money":"-78.23"}`
-	json.Unmarshal([]byte(someJsonString), &someStruct)
+	someJSONString := `{"user":"amupxm","money":"-78.23"}`
+	json.Unmarshal([]byte(someJSONString), &someStruct)
 	fmt.Printf("Unmarshaled money as cents : %v\n", someStruct.Money.AsCent()) // Unmarshaled money as cents : -7823
 
 	data := struct {

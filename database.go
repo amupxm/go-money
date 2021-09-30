@@ -7,6 +7,7 @@ import (
 	"reflect"
 )
 
+// Value implements the driver Valuer interface.
 func (c CAD) Value() (driver.Value, error) {
 	str := ""
 
@@ -24,6 +25,7 @@ func (c CAD) Value() (driver.Value, error) {
 	return fmt.Sprintf("%s%d.%s%d", neg, c.dollar, str, c.cents), nil
 }
 
+//Scan implements the sql.Scanner interface.
 func (c *CAD) Scan(src interface{}) (err error) {
 	var str string
 	v := reflect.ValueOf(src)
